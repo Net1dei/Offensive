@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Content Lab</title>
+    <!--Подключение bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <!--Подключение стилей-->
+    <link rel="stylesheet" href="style.css" />
+    <!--Подключение шрифта-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <!--Подключение скриптов-->
+    <script src="eel.js"></script>
+    <script src="script.js"></script>
+    <!--Uploading Images-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="text-center">
+      <h1>
+        <font size="7">ШАБЛОН</font>
+      </h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <!--start region carousel-->
+        <div class="col-3">
+          <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+              <div class="carousel-item active w-100">
+                <figure class="figure">
+                  <img
+                    src="kekw.png"
+                    width="500"
+                    class="figure-img img-fluid rounded"
+                    alt="..."
+                    id="mainImage"
+                  />
+                </figure>
+              </div>
+              <div class="carousel-item w-100">
+                <figure class="figure">
+                  <img
+                    src="https://basket-11.wb.ru/vol1619/part161938/161938879/images/c246x328/4.webp"
+                    width="500"
+                    class="figure-img img-fluid rounded"
+                    alt="..."
+                  />
+                  <figcaption class="figure-caption"></figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item w-100">
+                <figure class="figure">
+                  <img
+                    src="https://basket-05.wb.ru/vol985/part98509/98509817/images/big/1.jpg"
+                    width="500"
+                    class="figure-img img-fluid rounded"
+                    alt="..."
+                  />
+                  <figcaption class="figure-caption"></figcaption>
+                </figure>
+              </div>
+              <div class="carousel-item w-100">
+                <figure class="figure">
+                  <img
+                    src="https://basket-05.wb.ru/vol901/part90162/90162161/images/big/1.jpg"
+                    width="500"
+                    class="figure-img img-fluid rounded"
+                    alt="..."
+                  />
+                  <figcaption class="figure-caption"></figcaption>
+                </figure>
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExample"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExample"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+
+            <!--end region carousel-->
+
+            <div class="justify-content-center">
+              <button type="button" class="i-1" onclick="setImg()">
+                Перегенерировать фотографии
+              </button>
+              <input type="text" class="prompt">
+            </div>
+          </div> 
+        </div>
+
+        <!--start region foto-galery-->
+        <div
+          class="overflow-scroll p-3 col-3"
+          style="width: 200px; height: 722px"
+        >
+          <img
+            src="kekw.png"
+            class="ImgRight figure-img img-fluid rounded"
+            alt="..."
+            id="mainImage1"
+            name = "img1"
+          />
+          <img
+            src="https://basket-11.wb.ru/vol1619/part161938/161938879/images/c246x328/4.webp"
+            class="figure-img img-fluid rounded"
+            alt="..."
+          />
+          <img
+            src="https://basket-05.wb.ru/vol985/part98509/98509817/images/big/1.jpg"
+            class="figure-img img-fluid rounded"
+            alt="..."
+          />
+          <img
+            src="https://basket-05.wb.ru/vol901/part90162/90162161/images/big/1.jpg"
+            class="figure-img img-fluid rounded"
+            alt="..."
+          />
+        </div>
+        <!--end region foto-galery-->
+        <!--start region form-->
+        <div class="container1 col-6">
+          <h1></h1>
+          <input type="file" accept="image/*" id="files" multiple />
+          <h2>Характеристики товара</h2>
+          <div>
+            <label
+              >Бренд:
+              <input placeholder="Бренд" type="text" class="brand" required
+            /></label>
+            <label
+              >Продукт:
+              <input placeholder="Продукт" type="text" class="product" required
+            /></label>
+            <label
+              >Категория:
+              <input
+                placeholder="Категория товара"
+                type="text"
+                class="category"
+                required
+              />
+            </label>
+            <label
+              >Состав:
+              <input placeholder="Состав" type="text" class="sostav" required
+            /></label>
+          </div>
+          <label>Выберите нейросеть:</label>
+          <br><input type="radio" id="AI_1" value="gpt" name="nameofAI" class="1" onclick="select_AI()"><label >GPT</label></br>
+          <input type="radio" id="AI_2" value="llama2" name="nameofAI" class="2" onclick="select_AI()"><label>llama2</label>
+          <div><p>Ключевые слова:</p></div>
+          <textarea
+            placeholder="По этим словам часто ищут товар"
+            class="keyWords"
+          ></textarea>
+          <div class="description-block">
+            <div><p>Описание:</p></div>
+            <textarea
+              id="description"
+              placeholder="Введите описание"
+              class="description"
+            ></textarea>
+            <button type="submit" class="generation-button">
+              <img
+                src="/img/regeneration.png"
+                class="generation-button-img"
+                onclick="myClick()"
+              />
+            </button>
+            <button type="reset" id="wastebasket-button-1" class="wastebasket-button" onclick="clearDescription()">
+                <img src="/img/wastebasket.png" class="wastebasket-img" />
+            </button>
+          </div>
+          <h6>Отрегулируйте количество слов в описании</h6>
+          <input type="range" value="150" min="100" max="300" id="rangeOfDescription" onchange='getRange()' oninput="this.nextElementSibling.value = this.value">
+          <output id="out">150</output>
+          <div class="feedback-block">
+            <p>Отзыв:</p>
+            <textarea
+              id="feedback"
+              placeholder="Введите отзыв"
+              class="feedback"
+            ></textarea>
+            <button type="submit" class="generation-button">
+              <img
+                src="/img/regeneration.png"
+                class="generation-button-img"
+                onclick="Click_gen_feedback()"
+              />
+            </button>
+            <button type="reset" id="wastebasket-button-2" class="wastebasket-button" onclick="clearFeedback()">
+              <img src="/img/wastebasket.png" class="wastebasket-img" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <!--end region form-->
+    <!--start calc-prediction form-->
+    <div class="row">
+      <div class="calc container">
+        <h3 class="text-center">Калькулятор увеличения продаж</h3>
+        <div class="col-6 text-center"> 
+          <br><label>Позиция в категории: <br> <input placeholder="Позиция" type="text" class="categoryPosition" required/></br></label></br>     
+          <br><label>В наличии: <br> <input placeholder="Количество" type="text" class="inStock" required/></br></label></br>
+          <br><label>Отзывы: <br> <input placeholder="Количество отзывов" type="text" class="Feedback" required/></br></label></br>
+          <br><label>Рейтинг: <br> <input placeholder="Рейтинг" type="text" class="rating" required/></br></label></br>
+          <br><label>Цена: <br> <input placeholder="Цена" type="text" class="cost" required/></br></label></br>
+          <br><label>Запросы: <br> <input placeholder="Количество запросов" type="text" class="requestCount" required/></br></label></br>
+          <br><label>Скидка: <br> <input placeholder="Скидка" type="text" class="discount" required/></br></label></br>
+        </div>
+      </div>
+      <div class="calc2 text-center">
+        <h3>Предсказание</h3>
+        <input class="prediction" type="text">
+        <br><button class="predictionGET" onclick="getPrediction()">Получить</button></br>
+      </div>
+    </div>
+    <!--end calc-prediction-->
+    <div>
+      <input type="file" id="thumbnail" />
+    </div>
+    <div>
+      <img id="preview" src="" alt="thumbnail" />
+    </div>
+    <button onclick="SETimg()">button1</button>
+    <button onclick="postimg()">button2</button>
+    <script>
+      const input = document.getElementById("thumbnail");
+
+      input.addEventListener("change", (event) => {
+        const image = event.target.files[0];
+
+        const reader = new FileReader();
+
+        reader.readAsDataURL(image);
+        reader.addEventListener("load", () => {
+          localStorage.setItem("thumbnail", reader.result);
+        });
+      });
+      function SETimg() {
+        const thumbnail = localStorage.getItem("thumbnail");
+
+        const previewImage = document.getElementById("preview");
+
+        if (thumbnail) {
+          previewImage.setAttribute("src", thumbnail);
+        } else {
+          previewImage.setAttribute("src", "default.jpg");
+        }
+        alert(thumbnail);
+      }
+      function postimg() {
+        const file = localStorage.getItem("thumbnail");
+
+        const xhr = new XMLHttpRequest(); // создаем объект XMLHttpRequest
+        const formData = new FormData(); // создаем объект FormData для передачи файла
+
+        formData.append("file", file); // добавляем файл в объект FormData
+
+        xhr.open("POST", "/upload"); // указываем метод и URL сервера, куда будет отправлен файл
+        xhr.send(formData); // отправляем запрос на сервер с помощью метода send()
+        alert("img is send");
+      }
+    </script>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+  </html>
+  
