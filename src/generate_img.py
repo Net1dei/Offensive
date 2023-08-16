@@ -10,7 +10,7 @@ from PIL import ImageDraw
 
 
 
-async def gen_img(peremannaia):
+async def gen_imag(peremannaia):
     async with async_playwright() as p:
         browser = await p.firefox.launch(headless=False)
         page = await browser.new_page()
@@ -78,8 +78,8 @@ def srift(txt):
     draw.text((180, 10), txt, (255, 255, 255), font=font)
     img.save('./storage/3.png')
 
-def gen_imag(imgB64, prompt, txt):
-    asyncio.run(gen_img(peremannaia=imgB64))
+def gen_img(imgB64, prompt, txt):
+    asyncio.run(gen_imag(peremannaia=imgB64))
     asyncio.run(downloadurl(prompt=prompt))
     img_and_border()
     srift(txt=txt)
