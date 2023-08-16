@@ -10,7 +10,7 @@ from PIL import ImageDraw
 def create_txt(imgB64):
     with open("./storage/a.txt", "a") as file:
         file.write(f"{imgB64}")
-    lll = open('mvp.txt', 'r') 
+    lll = open('./storage/a.txt', 'r') 
     www = lll.read()
     return(www)
 
