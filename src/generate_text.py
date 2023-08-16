@@ -38,7 +38,7 @@ def generate_text_llama2(prompt):
         options.headless=True
         driver = webdriver.Edge(options)
         driver.get('https://huggingface.co/chat/')
-        time.sleep(2)
+        time.sleep(4)
         elText = driver.find_element(By.TAG_NAME,"textarea")
         elText.send_keys(prompt)
         ActionChains(driver) \
@@ -67,7 +67,6 @@ def generate_text_llama2(prompt):
 
 
 def generate_text(prompt, chat='gpt'):
-  print('____________1__________________')
   if chat=='gpt':
     text=generate_text_gpt(prompt)
   elif chat=='llama2':
