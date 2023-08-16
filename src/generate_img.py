@@ -78,7 +78,7 @@ def srift(txt):
     draw.text((180, 10), txt, (255, 255, 255), font=font)
     img.save('./storage/3.png')
 
-def gen_img(imgB64, prompt, txt):
+def gen_imag(imgB64, prompt, txt):
     asyncio.run(gen_img(peremannaia=imgB64))
     asyncio.run(downloadurl(prompt=prompt))
     img_and_border()
