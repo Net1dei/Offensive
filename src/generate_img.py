@@ -1,4 +1,3 @@
-
 from playwright.sync_api import Page
 from playwright.async_api import async_playwright
 import time
@@ -8,14 +7,19 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 
+def create_txt(imgB64):
+    with open("./storage/a.txt", "a") as file:
+        file.write(f"{imgB64}")
+    lll = open('mvp.txt', 'r') 
+    www = lll.read()
+    return(www)
 
-
-async def gen_imag(peremannaia):
+async def gen_imag():
     async with async_playwright() as p:
         browser = await p.firefox.launch(headless=False)
         page = await browser.new_page()
         await page.goto("https://snipp.ru/tools/base64-img-decode")
-        await page.locator("//textarea[@class='snp-form-textarea font-pre']").fill(peremannaia)
+        await page.locator("//textarea[@class='snp-form-textarea font-pre']").fill(create_txt())
         time.sleep(15)
         await page.get_by_role('button').click()
 
@@ -23,10 +27,8 @@ async def gen_imag(peremannaia):
             await page.locator("//div[@id='fid-result-img']//a[1]").click()
         download = await download_info.value
         print(await download.path())
-        await download.save_as("./storage/1.jpg")  #путь к папке сайта
+        await download.save_as("c:\\Users\\Admin\\Desktop\\ababab\\1.jpg")  
     
-    
-#prompt
 async def downloadurl(prompt):
     async with async_playwright() as p: 
         browser = await p.firefox.launch(headless=False)
@@ -52,13 +54,12 @@ async def downloadurl(prompt):
 
         image_url = await result.get_attribute("src") 
         url = image_url.replace(" ", "%20")
-        urllib.request.urlretrieve(url, './storage/2.webp')  #путь к папке сайта
-
+        urllib.request.urlretrieve(url, 'c:\\Users\\Admin\\Desktop\\ababab\\2.webp')  
 
 def img_and_border():
-    backgroung_img = Image.open("./storage/2.webp")
+    backgroung_img = Image.open("2.webp")
 
-    foreground_img=Image.open('./storage/ramka.png')
+    foreground_img=Image.open('ramka.png')
     crop_width = 600
     crop_height = 800
     img_width, img_height = backgroung_img.size
@@ -68,18 +69,20 @@ def img_and_border():
                          (img_height + crop_height) // 2))
     foreground_img = foreground_img.resize((lk.width, lk.height))
     lk.paste(foreground_img, (0,0), foreground_img)
-    lk.save('./storage/3.png')
+    lk.save('3.png')
 
 def srift(txt):
-    img = Image.open('./storage/3.png')
+    img = Image.open('3.png')
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype('arial.ttf', 20)
-
-    draw.text((180, 10), txt, (255, 255, 255), font=font)
-    img.save('./storage/3.png')
+    font = ImageFont.truetype('arial.ttf', 20, encoding='UTF-8')
+    w, h = draw.textsize(txt)
+    a = 600
+    draw.text(((a-w)/2, 10), txt, (255, 255, 255), font=font)
+    img.save('3.png')
 
 def gen_img(imgB64, prompt, txt):
-    asyncio.run(gen_imag(peremannaia=imgB64))
+    create_txt(imgB64=imgB64)
+    asyncio.run(gen_imag())
     asyncio.run(downloadurl(prompt=prompt))
     img_and_border()
     srift(txt=txt)
