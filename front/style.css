@@ -14,6 +14,7 @@ h3 {
 h1,
 h2,
 h3,
+h4,
 h6,
 p,
 label,
@@ -26,9 +27,10 @@ form {
   margin: 0 auto;
   padding: 15px;
 }
-.row {
+#row1 {
   margin-top: 10px;
   width: 1800px;
+  height: 700px;
 }
 .pack {
   background-color: rgb(200, 200, 250);
@@ -40,8 +42,8 @@ form {
 .description,
 .feedback,
 .keyWords {
-  width: 400px;
-  max-height: 200px;
+  width: 480px;
+  max-height: 80px;
   min-height: 53px;
 }
 .description-block {
@@ -49,6 +51,7 @@ form {
 }
 p {
   margin: 0;
+  margin-bottom: 10px;
 }
 .container {
   padding-right: 300;
@@ -88,6 +91,7 @@ p {
   background-color: #373737;
   margin-left: 10px;
   border-radius: 30px;
+  max-height: 710px;
 }
 .calc2 {
   width: 300px;
@@ -117,6 +121,131 @@ input,
 .sostav::placeholder,
 .keyWords::placeholder,
 .description::placeholder,
-.feedback::placeholder {
+.feedback::placeholder,
+.analitic::placeholder {
   color: #ffffff;
+  opacity: 0.5;
+}
+.predictionGET {
+  background-color: #4d6444;
+  color: #fff;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 5px 0 #232c1f;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.predictionGET:hover {
+  background-color: #4d6444;
+}
+#image-container {
+  background-color: #373737;
+  border-radius: 30px;
+  margin: 50px;
+  width: 2400px;
+  min-height: 300px;
+}
+.nomberimg {
+  width: 1150px;
+  height: 700px;
+  margin: 25px;
+  border-radius: 30px;
+}
+.analiticButton {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60px;
+  background-color: #4d6444;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: 0 5px 0 #232c1f;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-left: 65px;
+  font-size: 30px;
+}
+.analiticButton:hover {
+  background-color: #4d6444;
+}
+.analiticButton:active {
+  top: 3px;
+  box-shadow: 0 2px 0 #161b13;
+}
+.analiticBlock {
+  border-radius: 30px;
+  background-color: #373737;
+  width: 500px;
+  height: 700px;
+  margin: 50px;
+  margin-right: 0px;
+}
+.analiticLabel {
+  margin: 20px;
+  margin-right: 20px;
+}
+.analiticBlockButton {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  background-color: #4d6444;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 3px 0 #232c1f;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 15px;
+  text-align: center;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-color: #232c1f;
+  margin-top: 7px;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: #6f6f6f;
+}
+#carouselExample {
+  height: 665px;
+}
+.reGenerateButton,
+.prompt {
+  display: block;
+  width: 100%;
+}
+.reGenerateButton {
+  margin-top: 10px;
+}
+#carouselImg0,
+#carouselImg1,
+#carouselImg2,
+#carouselImg3 {
+  height: 665px;
+}
+.analiticName,
+.analiticCount {
+  height: auto;
+}
+.textGraphs {
+  font-size: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#blocks3 {
+  margin-left: 400px;
+  margin-right: 400px;
+}
+#carouselExample {
+  height: 655px;
+  width: 500px;
+}
+.col-6 {
+  max-width: 510px;
+  padding-right: 0px;
 }
