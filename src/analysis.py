@@ -3,10 +3,9 @@ from src.parameters import *
 import pandas as pd
 import matplotlib.pyplot as plt
 from colorthief import *
-import requests
-from io import BytesIO
 from src.utils import *
 import re
+from src.parameters import HEADERS
 
 modelD = CatBoostRegressor()
 modelD.load_model(WAY_TO_MODEL)
@@ -18,13 +17,14 @@ def get_predict(X):
     if y<0: y=0
     return(y)
 
-
+import urllib.request
+from PIL import Image
 
 # модернизация класса библиотеки colorthief
 class ColorThief(object):
-    def __init__(self, url):
-        response = requests.get(url)
-        self.image = Image.open(BytesIO(response.content))
+    def __init__(self, url):      
+        urllib.request.urlretrieve(url,"./storage/items.jpg")
+        self.image = Image.open("./storage/items.jpg")
 
     def get_color(self, quality=10):
         palette = self.get_palette(5, quality)
@@ -74,6 +74,7 @@ def plot_hist(column):
 def cut_name(csv):
     items=[]
     for item in csv['название']:
+        item= item.replace('-',' ')
         idx=[i for i, ltr in enumerate(item) if ltr == ' ']
         word=re.findall('[^0-9]',item[:idx[1]])
         items.append(''.join(word))
@@ -98,7 +99,9 @@ def get_main_request_Wildberries(csv):
     browser_count_item=[]
     for item in csv['название']:
         word_dict =get_top_words_Wildberries(item)
-        browser_count_item.append(list(word_dict.values())[0][0])
+        try:
+            browser_count_item.append(list(word_dict.values())[0][0])
+        except: browser_count_item.append(0)
     csv['Число запросов в Wildberries за 3 месяца'] = browser_count_item
     return csv
 
@@ -126,7 +129,7 @@ def plot_colors(column):
 
 #анализ топа товаров
 def analitic_top(path_csv):
-    csv = pd.read_csv(path_csv, sep=';',encoding="cp1251")
+    csv = pd.read_csv(path_csv, sep=';',encoding="cp1251")#"cp1251"
     csv=cut_name(csv)
     csv = get_main_request_Internet(csv)
     csv = get_main_request_Wildberries(csv)
