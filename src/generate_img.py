@@ -16,7 +16,7 @@ def create_txt(imgB64):
 
 async def gen_imag():
     async with async_playwright() as p:
-        browser = await p.firefox.launch(headless=False)
+        browser = await p.firefox.launch(headless=True)
         page = await browser.new_page()
         await page.goto("https://snipp.ru/tools/base64-img-decode")
         await page.locator("//textarea[@class='snp-form-textarea font-pre']").fill(create_txt())
@@ -31,7 +31,7 @@ async def gen_imag():
     
 async def downloadurl(prompt):
     async with async_playwright() as p: 
-        browser = await p.firefox.launch(headless=False)
+        browser = await p.firefox.launch(headless=True)
         page = await browser.new_page()
         await page.goto("https://imgcreator.zmo.ai/tools/background-changer")
         await page.set_input_files("input[type='file']", './storage/1.jpg')
