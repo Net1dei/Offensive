@@ -1,5 +1,5 @@
 from src.generate_text import generate_text
-from src.utils import meke_prompt, make_feedback_prompt, prepare_test_HG, get_requests_Wildberries, get_requests_Internet, get_items_fromWB
+from src.utils import meke_prompt, make_feedback_prompt, prepare_test_HG, get_requests_Wildberries, get_requests_Internet, parse_top_WB
 from src.analysis import get_predict, analitic_top
 import eel
 from src.generate_img import gen_img
@@ -21,8 +21,8 @@ def get_predictJS(requestCount,inStock,FeedbackCount,rating,cost,categoryPositio
 
 @eel.expose
 def analitic_topJS():
-    get_items_fromWB(limit=30)
-    analitic_top('./storage/products.csv')
+    parse_top_WB(limit=10)
+    analitic_top('./storage/data.csv')
 
 @eel.expose
 def get_requests_WildberriesJS(item,count=5):
