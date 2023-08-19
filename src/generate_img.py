@@ -8,27 +8,21 @@ from PIL import ImageFont
 from PIL import ImageDraw
 from src.parameters import LOGIN_IMG_GENERATOR
 from src.parameters import PASSWORD_IMG_GENERATOR
+import io 
+import base64
 
 
 async def gen_imag(imgB64):
-    async with async_playwright() as p:
-        browser = await p.firefox.launch()
-        page = await browser.new_page()
-        await page.goto("https://snipp.ru/tools/base64-img-decode")
-        await page.locator("//textarea[@class='snp-form-textarea font-pre']").fill(imgB64)
-        time.sleep(15)
-        await page.get_by_role('button').click()
-
-        async with page.expect_download() as download_info:
-            await page.locator("//div[@id='fid-result-img']//a[1]").click()
-        download = await download_info.value
-        print(await download.path())
-        await download.save_as("./storage/1.jpg")
+    imgB64 = imgB64[imgB64.find(','):]
+    image_bytes = base64.b64decode(imgB64)
+    image_buffer = io.BytesIO(image_bytes)
+    image = Image.open(image_buffer)
+    image.save("./storage/1.png")
 
 
 async def downloadurl(prompt):
     async with async_playwright() as p:
-        browser = await p.firefox.launch()
+        browser = await p.firefox.launch(headless=False)
         page = await browser.new_page()
         await page.goto("https://imgcreator.zmo.ai/tools/background-changer")
         await page.set_input_files("input[type='file']", './storage/1.jpg')
@@ -102,3 +96,4 @@ def gen_img(imgB64, prompt, txt):
     asyncio.run(downloadurl(prompt))
     img_and_border()
     srift(txt)
+
